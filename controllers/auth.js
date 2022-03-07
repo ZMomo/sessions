@@ -41,10 +41,10 @@ module.exports = {
         
     },
     logout: (req, res) => {
-        if (req.session) {
+        if (req?.session?.uid) {
             req.session.destroy();
             return res.status(200).send()
         }
-        return res.status(400).send()
+        return res.status(401).send()
     }
 }
