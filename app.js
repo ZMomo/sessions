@@ -9,7 +9,8 @@ app.use(cookieParser());
 
 app.use(session({
     secret: 'ma_session_super_secret_key',
-    resave: true,
+    saveUninitialized: false,
+    resave: false,
     cookie: { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }
 }));
 
