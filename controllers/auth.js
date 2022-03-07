@@ -25,6 +25,7 @@ module.exports = {
             const data = result[0][0];
             req.session.uid = data.id;
             req.session.email = data.email;
+            console.log(req.session);
             return res.status(200).json({ success: data });
         } catch (error) {
             return res.status(400).json({ error: error.message });
@@ -41,8 +42,10 @@ module.exports = {
         
     },
     logout: (req, res) => {
+        console.log(req.session);
         if (req?.session?.uid) {
             req.session.destroy();
+            console.log(req.session);
             return res.status(200).send()
         }
         return res.status(401).send()
