@@ -1,4 +1,4 @@
-const { login, register, checkLoginStatus, logout } = require('../controllers/auth');
+const { login, register, checkLoginStatus, logout, checkSession } = require('../controllers/auth');
 
 const router = require('express-promise-router')();
 
@@ -10,7 +10,7 @@ router.route('/login')
     .post(login);
 
 router.route('/logout')
-    .get(checkLoginStatus, logout);
+    .get(checkSession, logout);
 
 router.route('/protect')
 
