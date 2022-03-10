@@ -36,17 +36,15 @@ module.exports = {
     checkLoginStatus: async (req, res, next) => {
         const { uid, email } = req.session;
         if (uid && email) {
-            // return res.status(200).json({ success: { uid, email } });
+            // return res.status(200).json({ success: { uid,username email } });
             return next();
         }
         return res.status(403).send();
         
     },
     logout: (req, res) => {
-        console.log(req.session);
         if (req?.session?.uid) {
             req.session.destroy();
-            console.log(req.session);
             return res.status(200).send()
         }
         return res.status(401).send()
