@@ -33,7 +33,7 @@ module.exports = {
             if (connexion) connexion.end();
         }
     },
-    checkLoginStatus: async (req, res, next) => {
+    checkLoginStatus: async (req, res) => {
         const { uid, email } = req.session;
         if (uid && email) {
             return res.status(200).json({ success: { uid, email } });
@@ -41,7 +41,7 @@ module.exports = {
         return res.status(403).send();
         
     },
-    checkSession() {
+    checkSession: async (req, res, next) => {
         const { uid, email } = req.session;
         if (uid && email) {
             return next();
