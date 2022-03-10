@@ -10,6 +10,8 @@ router.route('/login')
     .post(login);
 
 router.route('/logout')
-    .get(logout);
+    .get(checkLoginStatus, logout);
+
+router.route('/protect')
 
 module.exports = router;
